@@ -66,12 +66,3 @@ graph TD
     Collision -->|Yes| GameOver[Game Over & Save Points]
     Collision -->|No| Score[Increment Points & Increase Difficulty]
 
-## 📂 File Structure
-
-
-├── main.cpp         # Complete source code (game engine, rendering, multithreading)
-├── Car_game.cbp     # Code::Blocks project configuration
-├── cars.txt         # Serialized binary data for active vehicles on save
-├── game.txt         # Serialized binary data for game state on save
-└── points.txt       # Historical scores and logs
-
