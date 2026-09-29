@@ -111,7 +111,7 @@ void *ReadCarInformationAndMove(void*);
 Car generateCar();
 
 
-int main()//Common
+int main()
 {
    playingGame.leftKey = leftKeyArrow;
    playingGame.rightKey = RightKeyArrow;
@@ -210,7 +210,7 @@ int main()//Common
 }
 
 
-Car generateCar()//Tamer
+Car generateCar()
 {
     Car car ;
     srand(time(NULL));
@@ -246,7 +246,7 @@ Car generateCar()//Tamer
     return car;
 }
 
-int generateRandomNumber(int upperBound ,int lowerBound)//Tamer
+int generateRandomNumber(int upperBound ,int lowerBound)
 {
     int randomNumber=rand() % (upperBound - lowerBound +1) + lowerBound;
     return randomNumber;
@@ -273,7 +273,7 @@ void initGame()
 }
 
 
-int createSettings()//Bilal
+int createSettings()
 {
     sleep(1.5);
     init_pair(1,COLOR_GREEN,COLOR_BLACK);
@@ -335,7 +335,7 @@ int createSettings()//Bilal
 }
 
 
-void createInstructions()//Bilal
+void createInstructions()
 {
     sleep(1.5);
     init_pair(1,COLOR_GREEN,COLOR_BLACK);
@@ -356,7 +356,7 @@ void createInstructions()//Bilal
 }
 
 
-int createMainMenu()//Bilal
+int createMainMenu()
 {
     init_pair(1,COLOR_GREEN,COLOR_BLACK);
     init_pair(2,COLOR_RED,COLOR_BLACK);
@@ -423,7 +423,7 @@ int createMainMenu()//Bilal
 }
 
 
-void *enqueue(void *)//Tamer
+void *enqueue(void *)
 {
     while(playingGame.IsGameRunning)
         {
@@ -442,7 +442,7 @@ void *enqueue(void *)//Tamer
         }
 }
 
-void *dequeue(void *)//Tamer
+void *dequeue(void *)
 {
     sleep(3);
     int sleepValue[]={2,4};
@@ -461,7 +461,7 @@ void *dequeue(void *)//Tamer
 }
 
 
-void *MoveCar(void* car)//Tamer
+void *MoveCar(void* car)
 {
     Car* car1 =(Car*)car;
     srand(time(NULL));
@@ -529,7 +529,7 @@ void *MoveCar(void* car)//Tamer
     }
 }
 
-void *newGame(void *)//Bilal
+void *newGame(void *)
 {
     printWindow();
     drawCar(playingGame.current,2,1);
@@ -586,7 +586,7 @@ void initWindow()
 }
 
 
-void printWindow()//Bilal
+void printWindow()
 {
     sleep(1.5);
     init_pair(1,COLOR_GREEN,COLOR_BLACK);
@@ -674,14 +674,14 @@ void drawCar(Car c, int type, int direction )
     }
 }
 
-void WritePoints(int point)//Bilal
+void WritePoints(int point)
 {
     FILE *file = fopen(pointsTxt,"a+");
     fprintf(file,"%d\n",point);
     fclose(file);
 }
 
-void ReadAndPrintPoints()//Bilal
+void ReadAndPrintPoints()
 {
     sleep(1.5);
     int x=MENUX;
@@ -717,13 +717,13 @@ void ReadAndPrintPoints()//Bilal
     sleep(1.5);
 }
 
-void WriteGameInformation(Game game)//Tamer
+void WriteGameInformation(Game game)
 {
     FILE *file = fopen(gameTxt,"wb");
     fwrite(&game,sizeof(Game),1,file);
     fclose(file);
 }
-Game ReadGameInformation()//Tamer
+Game ReadGameInformation()
 {
     FILE *file = fopen(gameTxt,"rb+");
     Game playingGameSaved;
@@ -737,7 +737,7 @@ Game ReadGameInformation()//Tamer
     }
 }
 
-void *WriteCarInformation(void* car)//Tamer
+void *WriteCarInformation(void* car)
 {
      Car* car1=(Car*) car;
      pthread_mutex_lock(&playingGame.mutexFile);
@@ -746,7 +746,7 @@ void *WriteCarInformation(void* car)//Tamer
      fclose(file);
      pthread_mutex_unlock(&playingGame.mutexFile);
 }
-void *ReadCarInformationAndMove(void*)//Tamer
+void *ReadCarInformationAndMove(void*)
 {
     FILE *file = fopen(CarsTxt,"rb+");
     while(!feof(file)){
